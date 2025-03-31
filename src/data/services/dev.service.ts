@@ -12,7 +12,7 @@ export class DevService implements TypeOrmOptionsFactory {
         : 3306,
       username: process.env.DB_USERNAME || 'root',
       password: process.env.DB_PASSWORD || 'root',
-      database: process.env.DB_NAME || 'db_fitness',
+      database: process.env.DB_NAME || 'db_igreja',
       entities: [],
       synchronize: true,
     };
