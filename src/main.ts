@@ -8,10 +8,10 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
     const config = new DocumentBuilder()
-      .setTitle('Move2Fit')
-      .setDescription('Projeto Fitness')
+      .setTitle('IgrejaConecta')
+      .setDescription('Projeto Agenda Para Igreja')
       .setContact(
-        'Grupo 02',
+        'Power Of Three',
         'https://github.com/Power-Of-Three',
         'https://github.com/Power-Of-Three',
       )
@@ -27,7 +27,7 @@ async function bootstrap() {
 
     app.enableCors();
 
-    await app.listen(process.env.PORT ?? 3000);
+    await app.listen(process.env.PORT ?? 4000);
 
     console.log(`A aplicação está sendo executada em: ${await app.getUrl()}`);
   } catch (error) {
