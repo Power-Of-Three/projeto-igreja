@@ -10,10 +10,9 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { MembrosEntity } from '../entities/membros.entity';
+
 import { MembroService } from '../service/membros.service';
-
-
+import { Membros } from '../entities/membros.entity';
 
 @Controller('membros')
 export class MembrosController {
@@ -21,30 +20,30 @@ export class MembrosController {
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  findAll(): Promise<MembrosEntity[]> {
+  findAll(): Promise<Membros[]> {
     return this.membroservice.findAll();
   }
 
   @Get('/:id')
   @HttpCode(HttpStatus.OK)
-  findById(@Param('id', ParseIntPipe) id: number): Promise<MembrosEntity> {
+  findById(@Param('id', ParseIntPipe) id: number): Promise<Membros> {
     return this.membroservice.findById(id);
   }
   @Get('/nomes/:nome')
   @HttpCode(HttpStatus.OK)
-  findByNome(@Param('nome') nome: string): Promise<MembrosEntity[]> {
+  findByNome(@Param('nome') nome: string): Promise<Membros[]> {
     return this.membroservice.findByNome(nome);
   }
 
   @Put('/:update')
   @HttpCode(HttpStatus.OK)
-  updateMembro(@Body() membro: MembrosEntity): Promise<MembrosEntity> {
+  updateMembro(@Body() membro: Membros): Promise<Membros> {
     return this.membroservice.updateMembro(membro);
   }
 
   @Post('/:criar')
   @HttpCode(HttpStatus.OK)
-  criarMembro(@Body() membro: MembrosEntity): Promise<MembrosEntity> {
+  criarMembro(@Body() membro: Membros): Promise<Membros> {
     return this.membroservice.createMembro(membro);
   }
 
