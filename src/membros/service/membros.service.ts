@@ -1,20 +1,21 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { MembrosEntity } from '../entities/membros.entity';
+
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, ILike, Repository } from 'typeorm';
+import { Membros } from '../entities/membros.entity';
 
 @Injectable()
 export class MembroService {
   constructor(
-    @InjectRepository(MembrosEntity)
-    private membrosRepository: Repository<MembrosEntity>,
+    @InjectRepository(Membros)
+    private membrosRepository: Repository<Membros>,
   ) {}
 
-  async findAll(): Promise<MembrosEntity[]> {
+  async findAll(): Promise<Membros[]> {
     return await this.membrosRepository.find();
   }
 
-  async findById(id: number): Promise<MembrosEntity> {
+  async findById(id: number): Promise<Membros> {
     const membro = await this.membrosRepository.findOne({
       where: {
         id,
@@ -25,7 +26,7 @@ export class MembroService {
     return membro;
   }
 
-  async findByNome(nome: string): Promise<MembrosEntity[]> {
+  async findByNome(nome: string): Promise<Membros[]> {
     const membroBuscadoPorNome = await this.membrosRepository.find({
       where: {
         nomeMembro: ILike(`%${nome}%`),
@@ -36,11 +37,11 @@ export class MembroService {
     return membroBuscadoPorNome;
   }
 
-  async createMembro(membro: MembrosEntity): Promise<MembrosEntity> {
+  async createMembro(membro: Membros): Promise<Membros> {
     return await this.membrosRepository.save(membro);
   }
 
-  async updateMembro(membro: MembrosEntity): Promise<MembrosEntity> {
+  async updateMembro(membro: Membros): Promise<Membros> {
     await this.findById(membro.id);
     return await this.membrosRepository.save(membro);
   }
