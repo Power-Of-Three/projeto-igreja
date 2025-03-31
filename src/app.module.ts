@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DevService } from './data/services/dev.service';
 import { ProdService } from './data/services/prod.service';
+import { AgendaModule } from './agenda/agenda.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ProdService } from './data/services/prod.service';
       imports: [ConfigModule],
     }),
     // AuthModule,
+    AgendaModule,
   ],
   controllers: [AppController],
   providers: [],

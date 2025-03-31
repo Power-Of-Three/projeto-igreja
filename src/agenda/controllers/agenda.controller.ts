@@ -1,11 +1,15 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
 import { AgendaService } from "../services/agenda.service";
 import { Agenda } from "../entities/agenda.entity";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 
 
+
+// @UseGuards(JwtAuthGuard)
 @ApiTags('Agenda')
 @Controller('/agenda')
+// @ApiBearerAuth()
 export class AgendaController {
     constructor(private readonly agendaService: AgendaService) {}
 
