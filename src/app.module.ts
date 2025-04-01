@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DevService } from './data/services/dev.service';
 import { ProdService } from './data/services/prod.service';
 import { AgendaModule } from './agenda/agenda.module';
+import { Postagem } from './postagem/entities/postagem.entity';
+import { PostagemModule } from './postagem/postagem.module';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { AgendaModule } from './agenda/agenda.module';
     }),
     // AuthModule,
     AgendaModule,
+    PostagemModule
   ],
   controllers: [AppController],
   providers: [],

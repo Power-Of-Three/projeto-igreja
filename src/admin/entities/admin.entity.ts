@@ -39,7 +39,7 @@ export class Admin {
   @ApiProperty()
   senha: string;
 
-  @ApiProperty()
-  @OneToMany(() => Agenda, (agenda) => agenda.admin)
-  agenda: Agenda[];
+  //  @ApiProperty()
+  //  @OneToMany(() => Agenda, (agenda) => agenda.admin)
+  //  agenda: Agenda[];
 }

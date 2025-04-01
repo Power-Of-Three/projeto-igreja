@@ -14,11 +14,11 @@ export class AdminService {
 
   async findAll(): Promise<Admin[]> {
     return await this.adminRepository.find({
-      relations: {
-        //postagem: true,
-        agenda: true,
-      },
-    });
+    //   relations: {
+    //     //postagem: true,
+    //     agenda: true,
+    //   },
+    // });
   }
   async findById(id: number): Promise<Admin> {
     const admin = await this.adminRepository.findOne({
